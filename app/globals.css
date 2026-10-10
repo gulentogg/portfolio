@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+body {
+  background-color: #121212; /* สีเทาดำเข้ม สบายตา */
+  color: #e2e8f0; /* สีตัวอักษรขาวหม่น ไม่แสบตา */
+}
