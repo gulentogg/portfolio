@@ -20,7 +20,7 @@ export default function Home() {
   const [fireflies, setFireflies] = useState<{ id: number; top: string; left: string; size: string; duration: string }[]>([]);
 
   useEffect(() => {
-    // สุ่มค่าดีเลย์ของบล็อกดินฝั่ง Client เพื่อแก้ปัญหา Next.js Prerender Error
+    // สุ่มค่าดีเลย์ของบล็อกดินฝั่ง Client
     const delays = Array.from({ length: 120 }).map(() => Math.random() * 0.5);
     setBlockDelays(delays);
 
@@ -76,7 +76,7 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // ฟังก์ชันวาร์ปไปยังหน้าที่ต้องการ (ใช้ร่วมกันได้ทั้งไป Projects และ About)
+  // ฟังก์ชันวาร์ปไปยังหน้าที่ต้องการ
   const handleWarp = (targetPath: string) => {
     playMinecraftClick();
     playWarpWindSound();
@@ -260,9 +260,23 @@ export default function Home() {
       {/* กรอบ UI หลัก */}
       <div className={`max-w-2xl w-full bg-[#181820]/95 backdrop-blur border-4 p-8 rounded relative z-20 font-rpg animate-rpg-outer transition-all ${isWarping ? 'warp-effect' : ''}`}>
         
-        <h1 className="text-3xl font-bold text-green-400 mb-2 font-pixel tracking-wider drop-shadow-[2px_2px_0px_#000]">
-          JIRAWISH.
-        </h1>
+        {/* ✨ เพิ่มหัวใจ 1 Year Anniversary ตรงนี้ ✨ */}
+        <div className="flex items-center gap-4 mb-2">
+          <h1 className="text-3xl font-bold text-green-400 font-pixel tracking-wider drop-shadow-[2px_2px_0px_#000]">
+            JIRAWISH.
+          </h1>
+          <a 
+            href="https://anniversary-one-year.vercel.app/" // 🔗 เอาลิงก์โปรเจกต์ครบรอบ 1 ปีมาใส่ตรงนี้ได้เลยครับ!
+            target="_blank" 
+            rel="noopener noreferrer"
+            onClick={playMinecraftClick}
+            className="text-2xl hover:scale-125 transition-transform cursor-pointer animate-pulse drop-shadow-[0_0_10px_rgba(239,68,68,0.8)] hover:drop-shadow-[0_0_15px_rgba(239,68,68,1)]"
+            title="1 Year Anniversary Memory 💖"
+          >
+            ❤️
+          </a>
+        </div>
+
         <h2 className="text-sm text-yellow-500 mb-6 font-pixel tracking-widest">
           [ Lv.99 Developer ]
         </h2>
@@ -301,7 +315,7 @@ export default function Home() {
           ที่คุณสามารถกดรันและดูผลลัพธ์ได้ทันที
         </p>
 
-        {/* ปรับ Layout ปุ่มให้เรียงกันและรองรับหน้าจอมือถือ */}
+        {/* ปรับ Layout ปุ่มให้เรียงกัน */}
         <div className="flex flex-col sm:flex-row gap-4">
           <button 
             onClick={() => handleWarp("/projects")}
